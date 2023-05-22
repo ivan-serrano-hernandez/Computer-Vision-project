@@ -15,7 +15,7 @@ function dirScaling(path)
         imagenEscalada = imresize(imagen, 0.5);
         
         % Guardar la imagen escalada con un nuevo nombre
-        nuevofilename = ['escalada_' filename];
+        nuevofilename = filename;
         nuevafilePath = fullfile(path, nuevofilename);
         imwrite(imagenEscalada, nuevafilePath);
         
