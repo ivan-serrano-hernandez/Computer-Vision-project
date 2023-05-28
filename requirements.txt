@@ -1,5 +1,5 @@
 opencv-python
 opencv-contrib-python
 numpy
-matplotlib.pyploy
-os
+matplotlib
+os-sys
