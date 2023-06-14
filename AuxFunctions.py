@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
-
+import math
 '''
 This function reads all the bbox of the images of file filepath to check if our tracker is correct
 
@@ -26,7 +26,7 @@ Function to check if the prediction is correct, following the metric a. (A ∩ B
 bboxPred -> Predicted bounding box.
 bboxReal -> Real bounding box.
 '''
-def getCorrectness(bboxPred, bboxReal):
+def getMetricIntesection(bboxPred, bboxReal):
     xp, yp, wp, hp = bboxPred
     xr,yr, wr,hr = bboxReal
     
@@ -46,6 +46,29 @@ def getCorrectness(bboxPred, bboxReal):
     
     return intersection / union
 
+
+'''
+Function to check if the prediction is correct, using the euclidean distance between the centroids of the boxes
+
+@params:
+bboxPred -> Predicted bounding box.
+bboxReal -> Real bounding box.
+'''
+def getMetricCentDist(bboxPred, bboxReal):
+    xp, yp, wp, hp = bboxPred
+    xr,yr, wr,hr = bboxReal
+    
+    p_x = xp + (wp / 2)
+    p_y = yp + (hp / 2)
+    
+    r_x = xr + (wr / 2)
+    r_y = yr + (hr / 2)
+    
+    distance = abs(math.sqrt((r_x - p_x)**2 + (r_y - p_y)**2))
+    
+    return distance
+
+#-----------------------------------------------------
 #-----------------------------------------------------
 '''
 Function that represents the plot for a list of metrics
