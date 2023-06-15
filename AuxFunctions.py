@@ -85,3 +85,26 @@ def plotResults(listOfMetrics):
     plt.yticks(ytick_positions)
     plt.gca().yaxis.set_major_formatter(yticks)
     plt.show()
+
+    
+#-----------------------------------------------------
+'''
+Function that draws an image with the predicted and the real box
+
+@params:
+img -> Image 
+bboxPred -> Predicted box( color red)
+bboxReal -> Real box (color green)
+'''
+def drawBox(img,bboxPred, bboxReal):
+    x1,y1,width,height = bboxPred
+    predRect = patches.Rectangle((x1, y1), width, height, linewidth=1, edgecolor='red', facecolor='none')
+    
+    x2,y2,widt2,heigh2 = bboxReal
+    realRect = patches.Rectangle((x2, y2), widt2, heigh2, linewidth=1, edgecolor='green', facecolor='none')
+    
+    fig,ax = plt.subplots()
+    ax.imshow(img)
+    ax.add_patch(predRect)
+    ax.add_patch(realRect)
+    plt.show()
