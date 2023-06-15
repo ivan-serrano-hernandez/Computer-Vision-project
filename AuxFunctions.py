@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import math
+import matplotlib.patches as patches
 '''
 This function reads all the bbox of the images of file filepath to check if our tracker is correct
 
@@ -76,14 +77,20 @@ Function that represents the plot for a list of metrics
 @params:
 listOfMetrics -> List with values of the metric for each frame
 '''
-def plotResults(listOfMetrics):
-    plt.plot(listOfMetrics)
-    plt.xlabel("Frame")
-    plt.ylabel("Percentage")
+def plotResults(intersecions, distances):
+    fig, axs =plt.subplots(2,1)
+    axs[0].plot(intersecions)
+    axs[0].set_xlabel("Frame")
+    axs[0].set_ylabel("Percentage")
     yticks = mtick.PercentFormatter(symbol='%')
     ytick_positions = [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
-    plt.yticks(ytick_positions)
-    plt.gca().yaxis.set_major_formatter(yticks)
+    axs[0].set_yticks(ytick_positions)
+    axs[0].yaxis.set_major_formatter(yticks)
+    
+    axs[1].plot(distances)
+    axs[1].set_xlabel("Frame")
+    axs[1].set_ylabel("Distance")
+    
     plt.show()
 
     
