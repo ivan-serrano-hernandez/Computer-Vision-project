@@ -78,7 +78,7 @@ Function that represents the plot for a list of metrics
 listOfMetrics -> List with values of the metric for each frame
 '''
 def plotResults(intersecions, distances):
-    fig, axs =plt.subplots(2,1)
+    fig, axs =plt.subplots(1,2)
     axs[0].plot(intersecions)
     axs[0].set_xlabel("Frame")
     axs[0].set_ylabel("Percentage")
