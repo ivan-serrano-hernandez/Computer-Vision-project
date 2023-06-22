@@ -3,3 +3,7 @@ opencv-contrib-python
 numpy
 matplotlib
 os-sys
+AuxFunctions
+statistics
+time
+PIL
